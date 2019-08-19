@@ -1,13 +1,24 @@
 service: stripe-shoppingcart
 
+custom:
+  customDomain:
+    domainName: stripe.myawstester.com
+    #basePath: "v1"
+    state: ${self:provider.stage}
+    certificateName: myawstester.com
+    createRoute53Record: true
 provider:
   name: aws
   runtime: nodejs10.x
+  deploymentBucket:
+    name: deploys.myawstester.sls
 
 functions:
-  hello:
-    handler: handler.app
+  app:
+    handler: index.handler
     events:
-     - http:
-         path: /
-         method: get
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+plugins:
+  - serverless-domain-manager
