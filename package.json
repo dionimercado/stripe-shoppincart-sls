@@ -1,0 +1,17 @@
+{
+  "name": "stripe-shoppingcart",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "deploy": "sls deploy"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "serverless-http": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
